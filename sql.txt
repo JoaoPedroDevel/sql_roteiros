@@ -1,0 +1,27 @@
+SELECT DISTINCT ON (cd, num_roteiro) 
+    cd,
+    num_roteiro,
+    rota_manifesto,
+    motorista,
+    nome_motorista,
+    placa_veiculo,
+    ano_veiculo,
+    tipo_veiculo,
+    status_roteiro,
+    tempo_previsto,
+    data_hora_inicio,
+    TO_DATE(data_hora_fim, 'DD/MM/YYYY HH24:MI') AS data_maxima,
+    tempo_total,
+    km_previsto,
+    km_ini_odo,
+    km_fim_odo,
+    km_tot_odo,
+    entregas,
+    realizadas,
+    retornos
+FROM 
+    roteiros
+ORDER BY 
+    cd, 
+    num_roteiro, 
+    TO_DATE(data_hora_fim, 'DD/MM/YYYY HH24:MI') DESC;
